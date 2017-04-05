@@ -82,11 +82,11 @@ s = s + "interface" + " " + classname + "\n";
 if(tokens[1].equals("class"))
 s = s + "class" + " " + classname + "\n";
 // visit and print the methods names
-//to find interface //new InterfaceFinder().visit(cu, null);
-//to find class//new ClassFinder().visit(cu, null);
-//to find methods//new MethodFinder().visit(cu, null);
-//to find attributes//new FieldFinder().visit(cu, null);
-//to find constructors//new FindConstructor().visit(cu, null);
+//to find interface //new FindInterface().visit(cu, null);
+new FindClass().visit(cu, null);
+//to find methods//new FindMethod().visit(cu, null);
+//to find attributes//new FindField().visit(cu, null);
+new FindConstructor().visit(cu, null);
 
 }
 }
