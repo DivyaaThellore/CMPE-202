@@ -73,7 +73,7 @@ List types = cu.getTypes();
 
 
 TypeDeclaration typeDec = (TypeDeclaration) types.get(0);
-r
+
 
 classname = typeDec.getName();
 

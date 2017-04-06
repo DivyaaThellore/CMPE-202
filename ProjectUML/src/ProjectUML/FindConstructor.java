@@ -17,7 +17,8 @@ String param =null;
 if(n.getParameters()!=null)
 {
 for(Parameter x : n.getParameters())
-{ System.out.println("classname:"+Umlgenerator.classname);
+{ 
+System.out.println("classname:"+Umlgenerator.classname);
 System.out.println("xxxxxxx:"+x.toString());
 
 if(param != null)
@@ -37,9 +38,6 @@ Umlgenerator.s = Umlgenerator.s + Umlgenerator.classname + " : "+ "+" + n.getNam
 
 Umlgenerator.s = Umlgenerator.s + "\n";
 }
-
-
-
 
 }
 
