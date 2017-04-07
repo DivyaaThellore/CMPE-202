@@ -17,7 +17,6 @@ public class FindClass extends VoidVisitorAdapter {
 @Override
 public void visit(ClassOrInterfaceDeclaration decl, Object arg)
 {
-// Make class extend Blah.
 
 List<ClassOrInterfaceType> list = decl.getExtends();
 
