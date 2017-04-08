@@ -1,5 +1,8 @@
 package ProjectUML;
 
+// to find the attributes or properties
+
+
 
 
 import japa.parser.ast.body.FieldDeclaration;
