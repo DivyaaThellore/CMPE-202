@@ -1,6 +1,4 @@
 package ProjectUML;
-
-
 	
 	import japa.parser.ast.body.MethodDeclaration;
 	import japa.parser.ast.body.Parameter;
@@ -8,7 +6,7 @@ package ProjectUML;
 	import japa.parser.ast.visitor.VoidVisitorAdapter;
 	
 	
-	public class FindOperations extends VoidVisitorAdapter {
+	//public class FindOperations extends VoidVisitorAdapter {
 	
 	
 	
