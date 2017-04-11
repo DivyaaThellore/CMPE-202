@@ -31,38 +31,38 @@ else
 i = Umlgenerator.list.indexOf(x);
 
 
-if(Umlgenerator.s.contains(Umlgenerator.list.get(i) + " -- " + Umlgenerator.classname ))
+if(Umlgenerator.input.contains(Umlgenerator.list.get(i) + " -- " + Umlgenerator.classname ))
 System.out.println("contains");
-else if(Umlgenerator.s.contains(" " + Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname ) && flag == false)
+else if(Umlgenerator.input.contains(" " + Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname ) && flag == false)
 {
 
-	Umlgenerator.s.replace(Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"1\" - \"1\" " + Umlgenerator.classname);
+	Umlgenerator.input.replace(Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"1\" - \"1\" " + Umlgenerator.classname);
 }
 
-else if(Umlgenerator.s.contains(" "+Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname ) && flag == true)
+else if(Umlgenerator.input.contains(" "+Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname ) && flag == true)
 {
 
-	Umlgenerator.s.replace(Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"*\" - \"1\" " + Umlgenerator.classname);
+	Umlgenerator.input.replace(Umlgenerator.list.get(i) + " - \"1\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"*\" - \"1\" " + Umlgenerator.classname);
 }
 
-else if(Umlgenerator.s.contains(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname ) && flag == false)
+else if(Umlgenerator.input.contains(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname ) && flag == false)
 {
 
-	Umlgenerator.s.replace(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"1\" - \"*\" " + Umlgenerator.classname);
+	Umlgenerator.input.replace(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"1\" - \"*\" " + Umlgenerator.classname);
 }
 
-else if(Umlgenerator.s.contains( Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname ) && flag == true)
+else if(Umlgenerator.input.contains( Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname ) && flag == true)
 {
 
-	Umlgenerator.s.replace(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"*\" - \"*\" " + Umlgenerator.classname);
+	Umlgenerator.input.replace(Umlgenerator.list.get(i) + " - \"*\" " + Umlgenerator.classname, Umlgenerator.list.get(i) + "\"*\" - \"*\" " + Umlgenerator.classname);
 }
 else
 {
 
 if(flag==false)
-	Umlgenerator.s = Umlgenerator.s + Umlgenerator.classname + " - \"1\" " + Umlgenerator.list.get(i) + "\n";
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.classname + " - \"1\" " + Umlgenerator.list.get(i) + "\n";
 else
-	Umlgenerator.s = Umlgenerator.s + Umlgenerator.classname + " - \"*\" " + Umlgenerator.list.get(i) + "\n";
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.classname + " - \"*\" " + Umlgenerator.list.get(i) + "\n";
 }
 
 }
@@ -85,15 +85,15 @@ if(strs[0].equals("protected"))
 strs[0]="#" ;
 if(strs.length >2 && (strs[0] == "+" || strs[0] == "-"))
 {
-	Umlgenerator.s = Umlgenerator.s + Umlgenerator.classname + " : " + strs[0] + " " + strs[2] + " : " + strs[1];
-	Umlgenerator.s = Umlgenerator.s + "\n";
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.classname + " : " + strs[0] + " " + strs[2] + " : " + strs[1];
+	Umlgenerator.input = Umlgenerator.input + "\n";
 strs[2] = Character.toUpperCase(strs[2].charAt(0)) + strs[2].substring(1);
 String rep1 = "get" + strs[2];
 String rep2 = "set" + strs[2];
 
 
-Umlgenerator.s = Umlgenerator.s.replaceAll( ".*"+rep1+".*(\r?\n|\r)?", "" );
-Umlgenerator.s = Umlgenerator.s.replaceAll( ".*"+rep2+".*(\r?\n|\r)?", "" );
+Umlgenerator.input = Umlgenerator.input.replaceAll( ".*"+rep1+".*(\r?\n|\r)?", "" );
+Umlgenerator.input = Umlgenerator.input.replaceAll( ".*"+rep2+".*(\r?\n|\r)?", "" );
 
 
 }

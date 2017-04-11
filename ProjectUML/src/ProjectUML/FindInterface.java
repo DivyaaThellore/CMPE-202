@@ -8,34 +8,22 @@ import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 
 public class FindInterface extends VoidVisitorAdapter{
-	
-	
-	@Override
+		
 	public void visit(ClassOrInterfaceDeclaration decl, Object arg)
-	{
-	
-	
-	
-	List<ClassOrInterfaceType> list = decl.getImplements();
-	if(list==null)
+	{	
+	List<ClassOrInterfaceType> l = decl.getImplements();
+	if(l==null)
 	return;
-	for (ClassOrInterfaceType k : list) {
-	String n = k.toString();
-	Umlgenerator.interfacelist.add(n);
-	if(!Umlgenerator.s.contains( n + "<|.. " + Umlgenerator.classname )
-	&& !Umlgenerator.s.contains
-	( n + "<.. " + Umlgenerator.classname + ":uses" ))
-		Umlgenerator.s = Umlgenerator.s + n + " " + "<|.. " + " " + 
-				Umlgenerator.classname + "\n";
+	for (ClassOrInterfaceType x : l) 
+		{
+		String s = x.toString();
+		Umlgenerator.interfacelist.add(s);
+		if(!Umlgenerator.input.contains( s + "<|.. " + Umlgenerator.classname )&& !Umlgenerator.input.contains(s+"<.. "+ Umlgenerator.classname +":uses" )){
+		Umlgenerator.input = Umlgenerator.input +s+"<|.. "+Umlgenerator.classname +"\n";
+		}
+		}
 	}
-	
-	
-	
-	}
-	
-	
-	
-	}
+}
 
 
 

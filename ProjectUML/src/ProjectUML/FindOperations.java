@@ -7,19 +7,16 @@ package ProjectUML;
 	
 	
 	public class FindOperations extends VoidVisitorAdapter {
+
+	public void visit(MethodDeclaration md, Object obj) {
 	
-	
-	
-	@Override
-	public void visit(MethodDeclaration n, Object arg) {
-	
-	if(n.getName()!=null)
-	Umlgenerator.methodlist.add(n.getName().toLowerCase());
+	if(md.getName()!=null)
+	Umlgenerator.methodlist.add(md.getName()/*.toLowerCase()*/);
 	String param= "";
 	
-	if (n.getBody() !=null && n.getBody().getStmts()!=null) {
+	if (md.getBody() !=null && md.getBody().getStmts()!=null) {
 	
-	for(Statement x : n.getBody().getStmts())
+	for(Statement x : md.getBody().getStmts())
 	{
 	if(x!=null)
 	{
@@ -32,16 +29,16 @@ package ProjectUML;
 	{
 	if(Umlgenerator.list.contains(tokens[0]))//list contains all class names.
 	
-	Umlgenerator.s = Umlgenerator.s + tokens[0] +"<.. " + Umlgenerator.classname + "\n";
+	Umlgenerator.input = Umlgenerator.input + tokens[0] +"<.. " + Umlgenerator.classname + "\n";
 	}
 	}
 	}
 	
 	}
 	
-	if(n.getParameters()!=null)
+	if(md.getParameters()!=null)
 	{
-	for(Parameter x : n.getParameters())
+	for(Parameter x : md.getParameters())
 	{
 	if(param != "")
 	param = param + "," + x.toString();
@@ -52,19 +49,19 @@ package ProjectUML;
 	
 	if(Umlgenerator.list.contains(check))
 	{
-	if(!Umlgenerator.s.contains(check + "<.. " + Umlgenerator.classname + ":uses") 
+	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.classname + ":uses") 
 	&& Umlgenerator.interfacelist.contains(check) 
 	&& !Umlgenerator.interfacelist.contains(Umlgenerator.classname))//note
-	Umlgenerator.s = Umlgenerator.s + check + "<.. " + Umlgenerator.classname + ":uses" + "\n";
+	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.classname + ":uses" + "\n";
 	}
 	} 
 	}
 
 	
-	if(n.getModifiers()==1)
+	if(md.getModifiers()==1)
 	{
-	Umlgenerator.s = Umlgenerator.s + Umlgenerator.classname + " : "+ "+" + n.getName() + "("+ param +")" + ":" + n.getType();
-	Umlgenerator.s = Umlgenerator.s + "\n";
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.classname + " : "+ "+" + md.getName() + "("+ param +")" + ":" + md.getType();
+	Umlgenerator.input = Umlgenerator.input + "\n";
 	}
 	}
 	
