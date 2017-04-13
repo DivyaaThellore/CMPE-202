@@ -18,8 +18,8 @@ public class FindInterface extends VoidVisitorAdapter{
 		{
 		String s = x.toString();
 		Umlgenerator.interfacelist.add(s);
-		if(!Umlgenerator.input.contains( s + "<|.. " + Umlgenerator.classname )&& !Umlgenerator.input.contains(s+"<.. "+ Umlgenerator.classname +":uses" )){
-		Umlgenerator.input = Umlgenerator.input +s+"<|.. "+Umlgenerator.classname +"\n";
+		if(!Umlgenerator.input.contains( s + "<|.. " + Umlgenerator.class_nm )&& !Umlgenerator.input.contains(s+"<.. "+ Umlgenerator.class_nm +":uses" )){
+		Umlgenerator.input = Umlgenerator.input +s+"<|.. "+Umlgenerator.class_nm +"\n";
 		}
 		}
 	}

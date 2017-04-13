@@ -11,7 +11,7 @@ package ProjectUML;
 	public void visit(MethodDeclaration md, Object obj) {
 	
 	if(md.getName()!=null)
-	Umlgenerator.methodlist.add(md.getName()/*.toLowerCase()*/);
+	Umlgenerator.methodlist.add(md.getName());
 	String param= "";
 	
 	if (md.getBody() !=null && md.getBody().getStmts()!=null) {
@@ -27,9 +27,9 @@ package ProjectUML;
 	
 	if(tokens[0]!=null)
 	{
-	if(Umlgenerator.list.contains(tokens[0]))//list contains all class names.
+	if(Umlgenerator.list.contains(tokens[0]))
 	
-	Umlgenerator.input = Umlgenerator.input + tokens[0] +"<.. " + Umlgenerator.classname + "\n";
+	Umlgenerator.input = Umlgenerator.input + tokens[0] +"<.. " + Umlgenerator.class_nm + "\n";
 	}
 	}
 	}
@@ -49,10 +49,10 @@ package ProjectUML;
 	
 	if(Umlgenerator.list.contains(check))
 	{
-	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.classname + ":uses") 
+	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
 	&& Umlgenerator.interfacelist.contains(check) 
-	&& !Umlgenerator.interfacelist.contains(Umlgenerator.classname))//note
-	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.classname + ":uses" + "\n";
+	&& !Umlgenerator.interfacelist.contains(Umlgenerator.class_nm))
+	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
 	}
 	} 
 	}
@@ -60,14 +60,10 @@ package ProjectUML;
 	
 	if(md.getModifiers()==1)
 	{
-	Umlgenerator.input = Umlgenerator.input + Umlgenerator.classname + " : "+ "+" + md.getName() + "("+ param +")" + ":" + md.getType();
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" + md.getName() + "("+ param +")" + ":" + md.getType();
 	Umlgenerator.input = Umlgenerator.input + "\n";
 	}
-	}
-	
-	
-	
-	
+	}	
 	}
 
 

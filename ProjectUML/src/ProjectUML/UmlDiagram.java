@@ -6,20 +6,21 @@ import java.io.FileNotFoundException;
 	import java.io.OutputStream;
 	import net.sourceforge.plantuml.SourceStringReader;
 	public class UmlDiagram {
-	public void umlCreator(String source , String path) {
+	public void umlCreator(String source , String fpath) {
 	
 	
-	OutputStream png = null;
+	OutputStream pic = null;
 	try {
-	png = new FileOutputStream(path+"//umldia.jpeg");
+	pic = new FileOutputStream(fpath+"//pic.jpeg");
 	} catch (FileNotFoundException e) {
 	
-	e.printStackTrace();
+	
 	}
-	SourceStringReader reader = new SourceStringReader(source);
+	SourceStringReader forclass = new SourceStringReader(source);
 	
 	try {
-	reader.generateImage(png);
+		forclass.generateImage(pic);
+	
 	} catch (IOException e) {
 	
 	e.printStackTrace();
