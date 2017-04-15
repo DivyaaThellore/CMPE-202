@@ -1,0 +1,17 @@
+@startuml
+skinparam classAttributeIconSize 0 
+interface A1
+interface A2
+class B1
+P<|--B1
+A1<|.. B1
+class B2
+P<|--B2
+A1<|.. B2
+A2<|.. B2
+class C1
+C1 : +test(A1 a1):void
+class C2
+C2 : +test(A2 a2):void
+class P
+@enduml 
