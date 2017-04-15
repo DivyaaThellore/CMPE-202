@@ -14,18 +14,19 @@ if(construct.getParameters()!=null)
 {
 for(Parameter p : construct.getParameters())
 { 
-//System.out.println("classname:"+Umlgenerator.class_nm);
-//System.out.println("xxxxxxx:"+p.toString());
+System.out.println("classname:"+Umlgenerator.class_nm);
+System.out.println("xxxxxxx:"+p.toString());
 
 if(str != null)
 str = str + "," + p.toString();
 else 
 str = p.toString();
 String check = p.getType().toString();
-System.out.println("check :"+check);
-if(Umlgenerator.list.contains(check))
+//System.out.println("check :"+check);
+
+if(Umlgenerator.ls.contains(check))
 {
-if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses")&& Umlgenerator.interfacelist.contains(check)&& !Umlgenerator.interfacelist.contains(Umlgenerator.class_nm))
+if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses")&& Umlgenerator.interfaces.contains(check)&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
 	Umlgenerator.input =Umlgenerator.input +check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
 }
 } 

@@ -17,7 +17,7 @@ if(lt==null)
 return;
 for (ClassOrInterfaceType l : lt) {
 String s=l.toString();
-Umlgenerator.input=Umlgenerator.input+s+"<|--"+Umlgenerator.class_nm+"\n";
+Umlgenerator.input=Umlgenerator.input+s+"<|--"+" "+Umlgenerator.class_nm+"\n";
 }
 }
 }

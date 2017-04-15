@@ -11,7 +11,7 @@ package ProjectUML;
 	public void visit(MethodDeclaration md, Object obj) {
 	
 	if(md.getName()!=null)
-	Umlgenerator.methodlist.add(md.getName());
+	Umlgenerator.operations.add(md.getName());
 	String param= "";
 	
 	if (md.getBody() !=null && md.getBody().getStmts()!=null) {
@@ -27,7 +27,7 @@ package ProjectUML;
 	
 	if(tokens[0]!=null)
 	{
-	if(Umlgenerator.list.contains(tokens[0]))
+	if(Umlgenerator.ls.contains(tokens[0]))
 	
 	Umlgenerator.input = Umlgenerator.input + tokens[0] +"<.. " + Umlgenerator.class_nm + "\n";
 	}
@@ -47,12 +47,12 @@ package ProjectUML;
 	String check = x.getType().toString();
 
 	
-	if(Umlgenerator.list.contains(check))
+	if(Umlgenerator.ls.contains(check))
 	{
 	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
-	&& Umlgenerator.interfacelist.contains(check) 
-	&& !Umlgenerator.interfacelist.contains(Umlgenerator.class_nm))
-	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
+	&& Umlgenerator.interfaces.contains(check) 
+	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
+	Umlgenerator.input = Umlgenerator.input+check + "<.." + Umlgenerator.class_nm + ":uses" + "\n";
 	}
 	} 
 	}
