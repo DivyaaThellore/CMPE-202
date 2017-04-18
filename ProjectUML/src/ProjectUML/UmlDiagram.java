@@ -14,7 +14,14 @@ import java.io.FileNotFoundException;
 	try {
 		
 		//pic = new FileOutputStream(fpath+ fname);
-	pic = new FileOutputStream(uml.p+"//pic.jpeg");
+		String pth=uml.p;
+		int del=pth.lastIndexOf('\\');
+		pth=pth.substring(0,del);
+		//System.out.println(pth);
+		
+		
+		
+	pic = new FileOutputStream(pth+"//pic.jpeg");
 	//pic=new FileOutputStream("C:\\Users\\T V Divyaa\\Desktop"+"\\second.jpg");
 	} catch (FileNotFoundException e) {
 	
@@ -23,15 +30,17 @@ import java.io.FileNotFoundException;
 	}
 	SourceStringReader forclass = new SourceStringReader(source);
 	
-	try {
-		forclass.generateImage(pic);
+	try 
+	{
 		//forclass.generateImage(pic_bkup);
+		forclass.generateImage(pic);}
+		
 	
-	} catch (IOException e) {
+	 catch (IOException e) {
 	
-		System.out.println("Stack Trave" + e);
+		System.out.println("Encountered Problem" + e);}
 	
-	}
+	
 	
 	}
 	}

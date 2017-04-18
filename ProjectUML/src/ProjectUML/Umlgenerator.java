@@ -56,9 +56,20 @@ public static void main(String[] args) throws Exception {
 	
 			File file = new File(path);
 			
-			//File op = new File(path +"\\op.txt");
-			//FileWriter fw = new FileWriter(op.getAbsoluteFile());
-			//BufferedWriter bw = new BufferedWriter(fw);
+			File op = new File(path +"\\op.txt");
+			System.out.println(op.getAbsoluteFile());
+			String oppath=op.getAbsolutePath();
+			System.out.println(op.getAbsolutePath());
+			int rem=oppath.lastIndexOf('\\');
+			oppath=removeCharAt(oppath,rem-1);
+			oppath=removeCharAt(oppath,rem-1);
+			System.out.println(oppath);
+			
+			
+			
+			
+			FileWriter fw = new FileWriter(oppath);
+			BufferedWriter bw = new BufferedWriter(fw);
 			
 			
 			
@@ -143,7 +154,7 @@ if(child.getName().contains(".java"))
 	
 	//String a_path=deleteCharAt(p,57);
 	//bulid.deleteCharAt(57);
-	//System.out.println(p);			
+	System.out.println(p);			
 		
 	
 FileInputStream in = new FileInputStream(p);
@@ -196,12 +207,13 @@ new FindInterface().visit(cu, null);
 }
 }
 input=input+"@enduml \n";
+System.out.println(input); 
 UmlDiagram d = new UmlDiagram();
 d.umlCreator(input);
+bw.write(input);
 //bw.write(input);
-//bw.write(input);
-//bw.close(); 
-System.out.println(input); 
+bw.close(); 
+//System.out.println(input); 
 }
 }
 public static String removeCharAt(String s, int pos) {
