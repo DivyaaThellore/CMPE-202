@@ -1,49 +1,40 @@
 package ProjectUML;
+/* 
+ * author T V Divyaa
+ * 
+ */
 
 import java.io.FileNotFoundException;
 	import java.io.FileOutputStream;
 	import java.io.IOException;
 	import java.io.OutputStream;
 	import net.sourceforge.plantuml.SourceStringReader;
+
 	public class UmlDiagram {
-		Umlgenerator uml;
-	public void umlCreator(String source) {
+	public void umlCreator(String source , String path) {
 	
 	
-	OutputStream pic = null;
+	OutputStream png = null;
 	try {
-		
-		//pic = new FileOutputStream(fpath+ fname);
-		String pth=uml.p;
-		int del=pth.lastIndexOf('\\');
-		pth=pth.substring(0,del);
-		//System.out.println(pth);
-		
-		
-		
-	pic = new FileOutputStream(pth+"//pic.jpeg");
-	//pic=new FileOutputStream("C:\\Users\\T V Divyaa\\Desktop"+"\\second.jpg");
-	} catch (FileNotFoundException e) {
-	
-		System.out.println("Error" +e);
-	
+	png = new FileOutputStream(path+"//pic.jpeg");
+	} 
+	catch (FileNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
 	}
-	SourceStringReader forclass = new SourceStringReader(source);
-	
-	try 
-	{
-		//forclass.generateImage(pic_bkup);
-		forclass.generateImage(pic);}
-		
-	
-	 catch (IOException e) {
-	
-		System.out.println("Encountered Problem" + e);}
-	
-	
-	
+	SourceStringReader reader = new SourceStringReader(source);
+	// Write the first image to "png"
+	try {
+	reader.generateImage(png);
+	} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
+	// Return a null string if no generation
 	}
 	}
+
+
 
 
 

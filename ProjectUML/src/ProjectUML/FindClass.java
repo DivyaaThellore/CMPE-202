@@ -1,24 +1,41 @@
 package ProjectUML;
-
+/* 
+ * author T V Divyaa
+ * 
+ */
 
 
 import java.util.List;
-import ProjectUML.Umlgenerator;
-import japa.parser.ast.body.ClassOrInterfaceDeclaration;
-import japa.parser.ast.type.ClassOrInterfaceType;
+
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
-public class FindClass extends VoidVisitorAdapter {
-	
-public void visit(ClassOrInterfaceDeclaration cls, Object obj)
-{
-List<ClassOrInterfaceType> lt=cls.getExtends();
-if(lt==null)
-return;
-for (ClassOrInterfaceType l : lt) {
-String s=l.toString();
-Umlgenerator.input=Umlgenerator.input+s+"<|--"+" "+Umlgenerator.class_nm+"\n";
-}
-}
-}
+import japa.parser.ast.body.ClassOrInterfaceDeclaration;
+import ProjectUML.Umlgenerator;
 
+import japa.parser.ast.type.ClassOrInterfaceType;
+
+
+
+public class FindClass extends VoidVisitorAdapter {
+
+public void visit(ClassOrInterfaceDeclaration c, Object obj)
+// Class to detect classes
+{
+
+//System.out.println(" 
+List<ClassOrInterfaceType> cls = c.getExtends();
+
+if(cls!=null){
+
+for (ClassOrInterfaceType i : cls)
+	// iterate through to give names.
+{
+String str;
+str= i.toString();
+Umlgenerator.input = Umlgenerator.input + str + " " + "<|--" + " " + Umlgenerator.class_nm + "\n";
+}
+}
+else
+	return;
+}
+}
