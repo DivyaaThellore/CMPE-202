@@ -17,7 +17,8 @@ String p =null;
 
 if(n.getParameters()!=null)
 {for(Parameter x : n.getParameters())
-{System.out.println("classname:");System.out.println(Umlgenerator.class_nm);
+{System.out.println("classname:");
+System.out.println(Umlgenerator.class_nm);
 	//System.out.println(Umlgenerator.class_nm);
 System.out.println("-----------");
 System.out.print(x.toString());

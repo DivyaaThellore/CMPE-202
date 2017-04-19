@@ -72,28 +72,24 @@ package ProjectUML;
 	{
 	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
 	&& Umlgenerator.interfaces.contains(check) 
-	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
-		// append to input string.
+	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))//note
 	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
 	}
 	} 
 	}
 
-	//if(n.getModifiers()=1
-	//{
-	//}
-		
+	
 	if(n.getModifiers()==1)
 	{
-		// append to input.
-	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm;
-	Umlgenerator.input = Umlgenerator.input + " : "+ "+" ;
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" ;
 	Umlgenerator.input = Umlgenerator.input + n.getName();
 			Umlgenerator.input = Umlgenerator.input +"("+ p +")" + ":" + n.getType();
-			Umlgenerator.input = Umlgenerator.input + "\n";
+	Umlgenerator.input = Umlgenerator.input + "\n";
 	}
 	}
-	//System.out.println(input);
+	
+	
+	
 	
 	}
 

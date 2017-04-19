@@ -85,7 +85,7 @@ ls.add(k);
 //System.out.println("print------"+k);
 
 }
-System.out.println("listin main"+ls);
+
 //System.out.println(list);
 //File dir = new File(args[0]);
 File folder = new File(path);
@@ -156,7 +156,7 @@ new FindOperations().visit(cu, null);
 }
 
 input = input + "@enduml\n";
-
+System.out.println("\n");
 System.out.println(input);
 // call on umlcreator () in umdiagram.
 p.drawPic(input,path);

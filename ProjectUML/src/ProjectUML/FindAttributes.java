@@ -11,49 +11,47 @@ package ProjectUML;
 	
 	public class FindAttributes extends VoidVisitorAdapter {
 	
-	
-	@Override
-	public void visit(FieldDeclaration n, Object arg) {
+
+	public void visit(FieldDeclaration n, Object obj) {
+		
 	int i;
 	
 	String x = n.getType().toString();
-	boolean flag =false;
-	System.out.println(Umlgenerator.class_nm);
-	System.out.println(Umlgenerator.ls);
-	if(Umlgenerator.ls.contains(x))
-	{
-	if(x.contains("Collection"))
-	{
+	boolean chk =false;
+
+	if(Umlgenerator.ls.contains(x)){
+	if(x.contains("Collection")){
 	i= Umlgenerator.ls.indexOf(x)-1;
-	flag =true;
+	chk =true;
 	}
-	else 
+	else {
 	i = Umlgenerator.ls.indexOf(x);
+	}
 	
 	
 	if(Umlgenerator.input.contains(Umlgenerator.ls.get(i) + " -- " + Umlgenerator.class_nm ))
 		
 	System.out.println("already there");
 	
-	else if(Umlgenerator.input.contains(" " + Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm ) && flag == false)
+	else if(Umlgenerator.input.contains(" " + Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm ) && chk == false)
 	{
 	
 		Umlgenerator.input.replace(Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm, Umlgenerator.ls.get(i) + "\"1\" - \"1\" " + Umlgenerator.class_nm);
 	}
 	
-	else if(Umlgenerator.input.contains(" "+Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm ) && flag == true)
+	else if(Umlgenerator.input.contains(" "+Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm ) && chk == true)
 	{
 	
 	Umlgenerator.input.replace(Umlgenerator.ls.get(i) + " - \"1\" " + Umlgenerator.class_nm, Umlgenerator.ls.get(i) + "\"*\" - \"1\" " + Umlgenerator.class_nm);
 	}
 	
-	else if(Umlgenerator.input.contains(Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm ) && flag == false)
+	else if(Umlgenerator.input.contains(Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm ) && chk == false)
 	{
 	
 	Umlgenerator.input.replace(Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm, Umlgenerator.ls.get(i) + "\"1\" - \"*\" " + Umlgenerator.class_nm);
 	}
 	
-	else if(Umlgenerator.input.contains( Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm ) && flag == true)
+	else if(Umlgenerator.input.contains( Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm ) && chk == true)
 	{
 	
 	Umlgenerator.input.replace(Umlgenerator.ls.get(i) + " - \"*\" " + Umlgenerator.class_nm, Umlgenerator.ls.get(i) + "\"*\" - \"*\" " + Umlgenerator.class_nm);
@@ -61,7 +59,7 @@ package ProjectUML;
 	else
 	{
 	
-	if(flag==false)
+	if(chk==false)
 	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " - \"1\" " + Umlgenerator.ls.get(i) + "\n";
 	else
 	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " - \"*\" " + Umlgenerator.ls.get(i) + "\n";
@@ -102,7 +100,7 @@ package ProjectUML;
 	}
 	
 	
-	super.visit(n, arg);
+	super.visit(n, obj);
 	}
 	
 	
