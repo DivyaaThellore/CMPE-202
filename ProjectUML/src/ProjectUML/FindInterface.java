@@ -18,30 +18,37 @@ public class FindInterface extends VoidVisitorAdapter {
 	 */
 
 
-public void visit(ClassOrInterfaceDeclaration decl, Object arg)
+public void visit(ClassOrInterfaceDeclaration n, Object obj)
 {
-// Make class extend Blah.
+// class to figure out interfaces.
 
 
-List<ClassOrInterfaceType> list = decl.getImplements();
-if(list==null)
-return;
-for (ClassOrInterfaceType k : list) {
-String n = k.toString();
-Umlgenerator.interfaces.add(n);
-if(!Umlgenerator.input.contains( n + "<|.. " + Umlgenerator.class_nm )
+List<ClassOrInterfaceType> inter= n.getImplements();
+
+
+if(inter!=null){
+	// checking. if not null proceed.
+	
+for (ClassOrInterfaceType i : inter) {
+	//System.out.printn("check");
+	
+String str = i.toString();
+Umlgenerator.interfaces.add(str);
+if(!Umlgenerator.input.contains( str + "<|.. " + Umlgenerator.class_nm )
 && !Umlgenerator.input.contains
-( n + "<.. " + Umlgenerator.class_nm + ":uses" ))
-	Umlgenerator.input = Umlgenerator.input + n + " " + "<|.. " + " " + 
-			Umlgenerator.class_nm + "\n";
+( str + "<.. " + Umlgenerator.class_nm + ":uses" ))
+	//System.out.println("test");
+	//Umlgenerator.input = Umlgenerator.input;
+Umlgenerator.input = Umlgenerator.input+ str;
+Umlgenerator.input = Umlgenerator.input+ " " + "<|.. "; 
+Umlgenerator.input = Umlgenerator.input+ " " + Umlgenerator.class_nm + "\n";
+}
 }
 
-
+else
+	return;
 
 }
-
-
-
 }
 
 

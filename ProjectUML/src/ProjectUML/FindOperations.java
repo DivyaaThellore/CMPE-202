@@ -10,69 +10,90 @@ package ProjectUML;
 	import japa.parser.ast.visitor.VoidVisitorAdapter;
 	
 	public class FindOperations extends VoidVisitorAdapter {
-	public void visit(MethodDeclaration n, Object arg) {
+		
+	public void visit(MethodDeclaration n, Object obj) {
+		// class to find the methods in the given program
 	
 	if(n.getName()!=null)
+		// check if value exists.
+		//System.out.println(n.getName());
+			
 	Umlgenerator.operations.add(n.getName().toLowerCase());
-	String param= "";
+
+	String p;
+	p= "";
 	
-	if (n.getBody() !=null && n.getBody().getStmts()!=null) {
+	if (n.getBody() !=null && n.getBody().getStmts()!=null)
+	{// entering the body of the method
+	// for each statement.
+	for(Statement i : n.getBody().getStmts())
+	{
+		//System.out.println(i);
+	if(i!=null)
+	{
+	String k = i.toString();
+	// check for [ .,?!]+
+	String id = "[ .,?!]+";
 	
-	for(Statement x : n.getBody().getStmts())
+	String[] s;
+	s= k.split(id);
+	
+	if(s[0]!=null)
 	{
-	if(x!=null)
+		// check for condition.
+		
+	if(Umlgenerator.ls.contains(s[0]))
 	{
-	String k = x.toString();
-	String delims = "[ .,?!]+";
-	// System.out.println("k :"+k);
-	String[] tokens = k.split(delims);
-	// System.out.println("token0"+tokens[0]);
-	if(tokens[0]!=null)
-	{
-	if(Umlgenerator.ls.contains(tokens[0]))//list contains all class names.
-	//comparing it with tokens[0] to find if the class name matches.
-	//this will check dependency in methods
-	//System.out.println("list :"+Umlgenerator.list);
-	Umlgenerator.input = Umlgenerator.input + tokens[0] +"<.. " + Umlgenerator.class_nm + "\n";
+		// add to the input string.
+	Umlgenerator.input = Umlgenerator.input + s[0] +"<.. "; 
+	Umlgenerator.input = Umlgenerator.input+ Umlgenerator.class_nm + "\n";
+	//System.out.println(input);
 	}
 	}
 	}
-	
+	}
 	}
 	
-	if(n.getParameters()!=null)
-	{
+	if(n.getParameters()!=null){
 	for(Parameter x : n.getParameters())
 	{
-	if(param != "")
-	param = param + "," + x.toString();
-	else 
-	param = x.toString();
+	if(p != ""){
+	p = p + ",";
+	p=p+ x.toString();
+	}
+	else {
+	p = x.toString();
+	}	
 	String check = x.getType().toString();
-	//System.out.println("Interfacelist : "+Umlgenerator.interfacelist);
-	// System.out.println("Classname : "+Umlgenerator.classname);
+	//System.out.println(check);
+
 	
 	if(Umlgenerator.ls.contains(check))
 	{
 	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
 	&& Umlgenerator.interfaces.contains(check) 
-	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))//note
+	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
+		// append to input string.
 	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
 	}
 	} 
 	}
-	//System.out.println(n.toString());
-	//System.out.println("getmodifiers : "+n.getModifiers());
-	
+
+	//if(n.getModifiers()=1
+	//{
+	//}
+		
 	if(n.getModifiers()==1)
 	{
-	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" + n.getName() + "("+ param +")" + ":" + n.getType();
-	Umlgenerator.input = Umlgenerator.input + "\n";
+		// append to input.
+	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm;
+	Umlgenerator.input = Umlgenerator.input + " : "+ "+" ;
+	Umlgenerator.input = Umlgenerator.input + n.getName();
+			Umlgenerator.input = Umlgenerator.input +"("+ p +")" + ":" + n.getType();
+			Umlgenerator.input = Umlgenerator.input + "\n";
 	}
 	}
-	
-	
-	
+	//System.out.println(input);
 	
 	}
 

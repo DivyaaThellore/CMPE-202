@@ -11,26 +11,32 @@ import java.io.FileNotFoundException;
 	import net.sourceforge.plantuml.SourceStringReader;
 
 	public class UmlDiagram {
-	public void umlCreator(String source , String path) {
+		
+	public void drawPic(String in , String path) {
 	
-	
-	OutputStream png = null;
-	try {
-	png = new FileOutputStream(path+"//pic.jpeg");
+	// System.out.printn(path);
+	//OutputStream png = null;
+		OutputStream pic = null;
+		SourceStringReader src = new SourceStringReader(in);
+	try {	pic = new FileOutputStream(path+"//pic.jpeg");
+	//System.out.println(pic.getAbsolutePath());
+	// try to catch the error on catch block.
 	} 
 	catch (FileNotFoundException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
+		// handle error if file cannot be located.
+		System.out.println("e");
+	
 	}
-	SourceStringReader reader = new SourceStringReader(source);
-	// Write the first image to "png"
-	try {
-	reader.generateImage(png);
-	} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-	}
-	// Return a null string if no generation
+	
+	
+	try { src.generateImage(pic);
+	// print the error.
+	} 
+	catch (IOException e) {
+		// print  the error .
+		System.out.println("encountered problems");
+		System.out.println("do nothing");}
+
 	}
 	}
 

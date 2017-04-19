@@ -16,30 +16,40 @@ public void visit(ConstructorDeclaration n, Object obj) {
 String p =null;
 
 if(n.getParameters()!=null)
-{
-for(Parameter x : n.getParameters())
-{System.out.println("classname:"+Umlgenerator.class_nm);
+{for(Parameter x : n.getParameters())
+{System.out.println("classname:");System.out.println(Umlgenerator.class_nm);
 	//System.out.println(Umlgenerator.class_nm);
-System.out.println("xxxxxxx:"+x.toString());
+System.out.println("-----------");
+System.out.print(x.toString());
 
-if(p != null)
-p = p + "," + x.toString();
+if(p == null)
+{
+	p = x.toString();
+}
 else 
 {
-p = x.toString();
+	p = p + "," + x.toString();
 }
-String flag = x.getType().toString();
+
+String flag;// set flag
+
+flag = x.getType().toString();// set value
+
 System.out.println("check :"+flag);
+// if flag is present...
 if(Umlgenerator.ls.contains(flag))
-{
+{// checking another condition.
 if(!Umlgenerator.input.contains(flag + "<.. " + Umlgenerator.class_nm + ":uses")&& Umlgenerator.interfaces.contains(flag)&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
-Umlgenerator.input = Umlgenerator.input + flag + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
-}
+Umlgenerator.input = Umlgenerator.input + flag + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";}
 } 
 }
-Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" + n.getName() + "("+ p +")" ;
-
+Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm;
+// System.ouyt.println(Umlgenerator.input);
+Umlgenerator.input = Umlgenerator.input + " : "+ "+" + n.getName() + "("+ p +")" ;
+//System.ouyt.println(Umlgenerator.input);
 Umlgenerator.input = Umlgenerator.input + "\n";
+//System.ouyt.println(Umlgenerator.input);
+//System.ouyt.println(Umlgenerator.input);
 }
 
 
