@@ -45,10 +45,18 @@ public static List<String> ls = new ArrayList<String>();
 public static void main(String[] args) throws Exception {
 //String path = args[0];
 //String path = "C:\\Users\\T V Divyaa\\Desktop\\TestCases\\uml-parser-test-2\\";
+	
+	if(args.length < 2) 
 
-//System.out.println(folderpath);
+		
+
+		System.out.println("Please give the corrrect format. \n \" java -jar <project.jar> <classpath> <outputfilename>\"");
+	
+//System.out.println(path);
 	UmlDiagram p = new UmlDiagram();
 	String path=args[0];
+	String oppath=args[1];
+	//System.out.println(oppath);
 	System.out.println(path);
 
 //File[] listOfFiles = folder.listFiles();

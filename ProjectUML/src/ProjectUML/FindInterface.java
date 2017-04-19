@@ -45,9 +45,11 @@ if(!Umlgenerator.input.contains( str + "<|.. " + Umlgenerator.class_nm )
 	
 
 /*Umlgenerator.input = Umlgenerator.input+ str;
-Umlgenerator.input = Umlgenerator.input+ " " + "<|.. "; 
-Umlgenerator.input = Umlgenerator.input+ " " + Umlgenerator.class_nm + "\n";*/
+Umlgenerator.input = Umlgenerator.input+ " " + "<|.. "; */
+
 	Umlgenerator.input = Umlgenerator.input + str + " " + "<|.. " + " " +Umlgenerator.class_nm + "\n";
+
+//Umlgenerator.input = Umlgenerator.input+ " " + Umlgenerator.class_nm + "\n";
 
 	
 }
