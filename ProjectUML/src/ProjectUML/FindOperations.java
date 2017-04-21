@@ -46,6 +46,7 @@ package ProjectUML;
 	{
 		// add to the input string.
 	Umlgenerator.input = Umlgenerator.input + s[0] +"<.. "; 
+	//check.
 	Umlgenerator.input = Umlgenerator.input+ Umlgenerator.class_nm + "\n";
 	//System.out.println(input);
 	}
@@ -55,9 +56,11 @@ package ProjectUML;
 	}
 	
 	if(n.getParameters()!=null){
+		// if not null 
 	for(Parameter x : n.getParameters())
 	{
 	if(p != ""){
+		//p+=x;
 	p = p + ",";
 	p=p+ x.toString();
 	}
@@ -70,25 +73,32 @@ package ProjectUML;
 	
 	if(Umlgenerator.ls.contains(check))
 	{
+		//check
 	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
+			//condition1
 	&& Umlgenerator.interfaces.contains(check) 
-	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))//note
+	// check
+	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
+		//do
 	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
 	}
+	
 	} 
 	}
 
 	
 	if(n.getModifiers()==1)
+		//System.out.println(n.getModifiers());
 	{
 	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" ;
-	Umlgenerator.input = Umlgenerator.input + n.getName();
+	// append to input string
+	Umlgenerator.input = Umlgenerator.input + n.getName();//Umlgenerator.input = Umlgenerator.input +"("+ p +")"
 			Umlgenerator.input = Umlgenerator.input +"("+ p +")" + ":" + n.getType();
+			
 	Umlgenerator.input = Umlgenerator.input + "\n";
 	}
 	}
-	
-	
+		
 	
 	
 	}
