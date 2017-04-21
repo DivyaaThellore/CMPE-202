@@ -29,11 +29,6 @@ import java.lang.*;
 import static java.lang.System.*;
 import java.util.List;
 
-
-
-	
-
-
 public class Umlgenerator {
 	// class for parsing...
 public static String input = "@startuml\n";
@@ -155,24 +150,28 @@ else System.out.println("");
 
 
 new FindClass().visit(cu, null);
-new FindConstructor().visit(cu, null);
-new FindInterface().visit(cu, null);
-new FindAttributes().visit(cu, null);
-new FindOperations().visit(cu, null);
 
-}
+new FindConstructor().visit(cu, null);
+	new FindInterface().visit(cu, null);
+
+	new FindAttributes().visit(cu, null);
+new FindOperations().visit(cu, null);}
 }
 
 input = input + "@enduml\n";
 System.out.println("\n");
+
 System.out.println(input);
 // call on umlcreator () in umdiagram.
 p.drawPic(input,path);
+
 //Systm.out.pritn(path);
 //bw.write(input);
 // write into output file.
+
 bw.write(input);
 bw.close(); 
+
 //System.out.println(input);
  
 }
