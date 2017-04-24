@@ -17,11 +17,11 @@ String p =null;
 
 if(n.getParameters()!=null)
 {for(Parameter x : n.getParameters())
-{System.out.println("classname:");
-System.out.println(Umlgenerator.class_nm);
-	//System.out.println(Umlgenerator.class_nm);
-System.out.println("-----------");
-System.out.print(x.toString());
+{//System.out.println("classname:");
+//System.out.println(UmlParser.class_nm);
+	//System.out.println(UmlParser.class_nm);
+//System.out.println("-----------");
+//System.out.print(x.toString());
 
 if(p == null)
 {
@@ -36,21 +36,21 @@ String flag;// set flag
 
 flag = x.getType().toString();// set value
 
-System.out.println("check :"+flag);
+//System.out.println("check :"+flag);
 // if flag is present...
-if(Umlgenerator.ls.contains(flag))
+if(UmlParser.ls.contains(flag))
 {// checking another condition.
-if(!Umlgenerator.input.contains(flag + "<.. " + Umlgenerator.class_nm + ":uses")&& Umlgenerator.interfaces.contains(flag)&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
-Umlgenerator.input = Umlgenerator.input + flag + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";}
+if(!UmlParser.input.contains(flag + "<.. " + UmlParser.class_nm + ":uses")&& UmlParser.interfaces.contains(flag)&& !UmlParser.interfaces.contains(UmlParser.class_nm))
+UmlParser.input = UmlParser.input + flag + "<.. " + UmlParser.class_nm + ":uses" + "\n";}
 } 
 }
-Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm;
-// System.ouyt.println(Umlgenerator.input);
-Umlgenerator.input = Umlgenerator.input + " : "+ "+" + n.getName() + "("+ p +")" ;
-//System.ouyt.println(Umlgenerator.input);
-Umlgenerator.input = Umlgenerator.input + "\n";
-//System.ouyt.println(Umlgenerator.input);
-//System.ouyt.println(Umlgenerator.input);
+UmlParser.input = UmlParser.input + UmlParser.class_nm;
+// System.ouyt.println(UmlParser.input);
+UmlParser.input = UmlParser.input + " : "+ "+" + n.getName() + "("+ p +")" ;
+//System.ouyt.println(UmlParser.input);
+UmlParser.input = UmlParser.input + "\n";
+//System.ouyt.println(UmlParser.input);
+//System.ouyt.println(UmlParser.input);
 }
 
 

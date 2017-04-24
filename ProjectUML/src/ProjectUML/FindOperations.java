@@ -18,7 +18,7 @@ package ProjectUML;
 		// check if value exists.
 		//System.out.println(n.getName());
 			
-	Umlgenerator.operations.add(n.getName().toLowerCase());
+	UmlParser.operations.add(n.getName().toLowerCase());
 
 	String p;
 	p= "";
@@ -42,12 +42,12 @@ package ProjectUML;
 	{
 		// check for condition.
 		
-	if(Umlgenerator.ls.contains(s[0]))
+	if(UmlParser.ls.contains(s[0]))
 	{
 		// add to the input string.
-	Umlgenerator.input = Umlgenerator.input + s[0] +"<.. "; 
+	UmlParser.input = UmlParser.input + s[0] +"<.. "; 
 	//check.
-	Umlgenerator.input = Umlgenerator.input+ Umlgenerator.class_nm + "\n";
+	UmlParser.input = UmlParser.input+ UmlParser.class_nm + "\n";
 	//System.out.println(input);
 	}
 	}
@@ -71,16 +71,16 @@ package ProjectUML;
 	//System.out.println(check);
 
 	
-	if(Umlgenerator.ls.contains(check))
+	if(UmlParser.ls.contains(check))
 	{
 		//check
-	if(!Umlgenerator.input.contains(check + "<.. " + Umlgenerator.class_nm + ":uses") 
+	if(!UmlParser.input.contains(check + "<.. " + UmlParser.class_nm + ":uses") 
 			//condition1
-	&& Umlgenerator.interfaces.contains(check) 
+	&& UmlParser.interfaces.contains(check) 
 	// check
-	&& !Umlgenerator.interfaces.contains(Umlgenerator.class_nm))
+	&& !UmlParser.interfaces.contains(UmlParser.class_nm))
 		//do
-	Umlgenerator.input = Umlgenerator.input + check + "<.. " + Umlgenerator.class_nm + ":uses" + "\n";
+	UmlParser.input = UmlParser.input + check + "<.. " + UmlParser.class_nm + ":uses" + "\n";
 	}
 	
 	} 
@@ -90,12 +90,12 @@ package ProjectUML;
 	if(n.getModifiers()==1)
 		//System.out.println(n.getModifiers());
 	{
-	Umlgenerator.input = Umlgenerator.input + Umlgenerator.class_nm + " : "+ "+" ;
+	UmlParser.input = UmlParser.input + UmlParser.class_nm + " : "+ "+" ;
 	// append to input string
-	Umlgenerator.input = Umlgenerator.input + n.getName();//Umlgenerator.input = Umlgenerator.input +"("+ p +")"
-			Umlgenerator.input = Umlgenerator.input +"("+ p +")" + ":" + n.getType();
+	UmlParser.input = UmlParser.input + n.getName();//UmlParser.input = UmlParser.input +"("+ p +")"
+			UmlParser.input = UmlParser.input +"("+ p +")" + ":" + n.getType();
 			
-	Umlgenerator.input = Umlgenerator.input + "\n";
+	UmlParser.input = UmlParser.input + "\n";
 	}
 	}
 		

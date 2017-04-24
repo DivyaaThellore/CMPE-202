@@ -33,23 +33,23 @@ if(inter==null)
 	
 for (ClassOrInterfaceType i : inter) {
 	//System.out.printn("check");
-	System.out.println(i.toString());
+	//System.out.println(i.toString());
 	
 String str = i.toString();
-Umlgenerator.interfaces.add(str);
-if(!Umlgenerator.input.contains( str + "<|.. " + Umlgenerator.class_nm )
-&& !Umlgenerator.input.contains
-( str + "<.. " + Umlgenerator.class_nm + ":uses" ))
+UmlParser.interfaces.add(str);
+if(!UmlParser.input.contains( str + "<|.. " + UmlParser.class_nm )
+&& !UmlParser.input.contains
+( str + "<.. " + UmlParser.class_nm + ":uses" ))
 	//System.out.println("test");
-	//Umlgenerator.input = Umlgenerator.input;
+	//UmlParser.input = UmlParser.input;
 	
 
-/*Umlgenerator.input = Umlgenerator.input+ str;
-Umlgenerator.input = Umlgenerator.input+ " " + "<|.. "; */
+/*UmlParser.input = UmlParser.input+ str;
+UmlParser.input = UmlParser.input+ " " + "<|.. "; */
 
-	Umlgenerator.input = Umlgenerator.input + str + " " + "<|.. " + " " +Umlgenerator.class_nm + "\n";
+	UmlParser.input = UmlParser.input + str + " " + "<|.. " + " " +UmlParser.class_nm + "\n";
 
-//Umlgenerator.input = Umlgenerator.input+ " " + Umlgenerator.class_nm + "\n";
+//UmlParser.input = UmlParser.input+ " " + UmlParser.class_nm + "\n";
 
 	
 }

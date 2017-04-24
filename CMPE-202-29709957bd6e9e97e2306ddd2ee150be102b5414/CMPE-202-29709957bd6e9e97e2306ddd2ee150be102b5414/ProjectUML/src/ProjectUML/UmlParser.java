@@ -8,6 +8,8 @@ package ProjectUML;
  */
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.FileOutputStream;
 import japa.parser.JavaParser;
 import japa.parser.ast.CompilationUnit;
@@ -21,15 +23,17 @@ import japa.parser.ast.stmt.Statement;
 import japa.parser.ast.body.Parameter;
 import japa.parser.ast.type.ClassOrInterfaceType;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
+import net.sourceforge.plantuml.SourceStringReader;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.lang.*;
 import static java.lang.System.*;
 import java.util.List;
 
-public class Umlgenerator {
+public class UmlParser {
 	// class for parsing...
 public static String input = "@startuml\n";
 public static String class_nm;
@@ -48,7 +52,7 @@ public static void main(String[] args) throws Exception {
 		System.out.println("Please give the corrrect format. \n \" java -jar <project.jar> <classpath> <outputfilename>\"");
 	
 //System.out.println(path);
-	UmlDiagram p = new UmlDiagram();
+	//UmlDiagram p = new UmlDiagram();
 	String path=args[0];
 	String oppath=args[1];
 	//System.out.println(oppath);
@@ -163,11 +167,37 @@ System.out.println("\n");
 
 System.out.println(input);
 // call on umlcreator () in umdiagram.
-p.drawPic(input,path);
+//p.drawPic(input,path);
 
 //Systm.out.pritn(path);
 //bw.write(input);
 // write into output file.
+
+//System.out.printn(path);
+	//OutputStream png = null;
+		OutputStream pic = null;
+		SourceStringReader src = new SourceStringReader(input);
+	try {	pic = new FileOutputStream(path+"//pic.jpeg");
+	//System.out.println(pic.getAbsolutePath());
+	// try to catch the error on catch block.
+	} 
+	catch (FileNotFoundException e) {
+		// handle error if file cannot be located.
+		System.out.println("e");
+	
+	}
+	
+	
+	try { src.generateImage(pic);
+	// print the error.
+	} 
+	catch (IOException e) {
+		// print  the error .
+		System.out.println("encountered problems");
+		System.out.println("do nothing");}
+
+
+
 
 bw.write(input);
 bw.close(); 

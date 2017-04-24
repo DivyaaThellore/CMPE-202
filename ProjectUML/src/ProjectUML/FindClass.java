@@ -10,7 +10,7 @@ import java.util.List;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
-import ProjectUML.Umlgenerator;
+import ProjectUML.UmlParser;
 
 import japa.parser.ast.type.ClassOrInterfaceType;
 
@@ -32,7 +32,7 @@ for (ClassOrInterfaceType i : cls)
 {
 String str;
 str= i.toString();
-Umlgenerator.input = Umlgenerator.input + str + " " + "<|--" + " " + Umlgenerator.class_nm + "\n";
+UmlParser.input = UmlParser.input + str + " " + "<|--" + " " + UmlParser.class_nm + "\n";
 }
 }
 else
