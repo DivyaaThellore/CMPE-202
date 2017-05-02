@@ -1,28 +1,32 @@
 package seq;
-	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
 	
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.FileOutputStream;
-	import java.util.Stack;
-	import java.io.BufferedReader;
+import java.util.Stack;
+import java.io.BufferedReader;
 
 import java.io.File;
 
 	import java.io.BufferedOutputStream;
+	import java.io.InputStream;
 	import java.io.InputStreamReader;
 	import java.io.OutputStreamWriter;
 	import java.io.OutputStream;
-	import java.io.InputStream;
+	
 	import java.net.MalformedURLException;
+	
 	import java.net.URLEncoder;
 	import java.net.URL;
 	import java.net.URLConnection;	
 	import org.junit.runner.JUnitCore;
-
-
 
 	public aspect GenerateSequence {
 		
@@ -154,15 +158,14 @@ import java.io.File;
 				//URL url = new URL(url_name);
 				URLConnection C = url.openConnection();//connect
 				boolean flag=true;
-				C.setDoOutput(flag);
+				C.setDoOutput(flag);//flag
 				OutputStreamWriter writer = new OutputStreamWriter(C.getOutputStream());
-				writer.write(data);
-				writer.flush();		
+				writer.write(data);//write(data);
+				writer.flush();	//flush	
 				StringBuffer output = new StringBuffer();
-				BufferedReader r = new BufferedReader(new InputStreamReader(C.getInputStream()));
+				BufferedReader r = new BufferedReader(new InputStreamReader(C.getInputStream())); //BufferedReader r
 // while()
-				do {
-					// out.append();
+				do {// out.append();
 					output.append(l);
 				}while ((l = r.readLine()) != null);//!null
 				writer.close();
@@ -202,7 +205,5 @@ import java.io.File;
 			}
 
 		}
-		
-		
-//}
+		//}
 }
