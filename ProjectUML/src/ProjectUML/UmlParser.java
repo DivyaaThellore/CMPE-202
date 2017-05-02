@@ -36,10 +36,12 @@ package ProjectUML;
 	public class UmlParser {
 		
 		// class for parsing...
-	public static String input = "@startuml\n";
+	public static String input = "@startuml\n";//@startuml
 	public static String class_nm;
-	public static List<String> interfaces = new ArrayList<String>();
-	public static List<String> operations = new ArrayList<String>();
+	//public String class_nm;
+	public static List<String> interfaces = new ArrayList<String>();//ArrayList<String>()
+	public static List<String> operations = new ArrayList<String>();//ArrayList<String>()
+	
 	public static List<String> ls = new ArrayList<String>();
 
 	public static void main(String[] args) throws Exception {
@@ -48,7 +50,6 @@ package ProjectUML;
 		
 		if(args.length < 2) 
 
-			
 
 			System.out.println("Please give the corrrect format. \n \" java -jar <project.jar> <classpath> <outputfilename>\"");
 		
@@ -83,14 +84,14 @@ package ProjectUML;
 	String k= Filesls[i].getName();
 	//System.out.println(k);
 
-	k = k.replaceAll(".java","");
+	k = k.replaceAll(".java","");//replace
 	//System.out.println(k);
-	ls.add(k);
+	ls.add(k);//add
 	// for ( int i:ls)
 	// System.out.printn(ls);
 
-	k="Collection<"+k+">";
-	ls.add(k);
+	k="Collection<"+k+">";//">"
+	ls.add(k);//
 	//System.out.println("print------"+k);
 
 	}
@@ -101,25 +102,25 @@ package ProjectUML;
 
 	File[] directoryls = folder.listFiles();
 	// list file in the folder.
-	if (directoryls != null) {
+	if (directoryls != null) {//{
 		// if not null
 	for (File f : directoryls) {
 	if(f.getName().contains(".java"))
 	{//if the file is a java file parse it.
-	FileInputStream in = new FileInputStream(f.getAbsolutePath());
+	FileInputStream in = new FileInputStream(f.getAbsolutePath());//file
 	CompilationUnit cu;
 	try 
 	{
 		//
 	cu = JavaParser.parse(in);
-	}
+	}//
 	finally {
 		// close the FileInputStream object
 		
-	in.close();
+	in.close();//close()
 	}
 
-	String str = cu.toString();
+	String str = cu.toString();//str
 
 	String lines[] = str.split("\\r?\\n");
 	//for(int i:ines.length)
@@ -141,7 +142,8 @@ package ProjectUML;
 
 	if(s[1].equals("class"))
 	{// adding classes
-		input = input + "class" + " ";
+		input = input + "class" + " ";//class_nm;
+		
 		input = input + class_nm;
 	input = input +"\n";	
 	}
@@ -156,11 +158,12 @@ package ProjectUML;
 
 
 	new FindClass().visit(cu, null);
-
+//new FindInterface().visit(cu, null);
 	new FindConstructor().visit(cu, null);
 		new FindInterface().visit(cu, null);
 
 		new FindAttributes().visit(cu, null);
+		//new FindOperations().visit(cu, null)
 	new FindOperations().visit(cu, null);}
 	}
 
@@ -178,7 +181,7 @@ package ProjectUML;
 	//System.out.printn(path);
 		//OutputStream png = null;
 			OutputStream pic = null;
-			SourceStringReader src = new SourceStringReader(input);
+			SourceStringReader src = new SourceStringReader(input);//input
 		try {	pic = new FileOutputStream(path+"//pic.jpeg");
 		//System.out.println(pic.getAbsolutePath());
 		// try to catch the error on catch block.
@@ -195,7 +198,7 @@ package ProjectUML;
 		} 
 		catch (IOException e) {
 			// print  the error .
-			System.out.println("encountered problems");
+			System.out.println("encountered problems");//problems
 			System.out.println("do nothing");}
 
 

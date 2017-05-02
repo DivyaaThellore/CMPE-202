@@ -16,18 +16,21 @@ package ProjectUML;
 		
 		// int i=;
 	int i;
+	//String p="public",pr="private",pro="protected";
 	
-	String x = n.getType().toString();
+	String x = n.getType().toString();//x
 	//System.out.println(x);
 	
 	//boolean chk
 	boolean chk =false;
 
 	if(UmlParser.ls.contains(x)){
-	if(x.contains("Collection")){
-	i= UmlParser.ls.indexOf(x)-1;
+		//if(x.contains("Collection"))
+	if(x.contains("Collection")){//{
+		int l=UmlParser.ls.indexOf(x)-1;
+	i= l;
 	// chk;
-	chk =true;
+	chk=true;
 	}
 	
 	else {
@@ -36,53 +39,54 @@ package ProjectUML;
 	}
 	
 	
-	if(UmlParser.input.contains(UmlParser.ls.get(i) + " -- " + UmlParser.class_nm ))//get(i) + " -- " + UmlParser.class_nm ))
+	if(UmlParser.input.contains(UmlParser.ls.get(i)+"--"+UmlParser.class_nm ))//get(i) + " -- " + UmlParser.class_nm ))
 	
 		//			System.out.println("already there");	
-		System.out.println("already there");
+		System.out.println("present");
 	
 	
-	else if(UmlParser.input.contains(" " + UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm ) && chk == false){
+	else if(UmlParser.input.contains(" "+UmlParser.ls.get(i) + " - \"1\" "+/* " - \"1\" "+*/UmlParser.class_nm )&&chk == false){
 		/*UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"1\" - \"1\" " + UmlParser.class_nm);
 	}
 	*/	
-		UmlParser.input.replace(UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"1\" - \"1\" " + UmlParser.class_nm);
+		UmlParser.input.replace(UmlParser.ls.get(i) + " - \"1\" " +/* " - \"1\" "+*/ UmlParser.class_nm, UmlParser.ls.get(i) + "\"1\" - \"1\" " + UmlParser.class_nm);
 	}
 	
-	else if(UmlParser.input.contains(" "+UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm ) && chk == true)
+	else if(UmlParser.input.contains(" "+UmlParser.ls.get(i) + " - \"1\" "/* " - \"1\" "+*/ + UmlParser.class_nm ) && chk == true)
 	{
 	
 		//System.out.println(input);
 		//i) + " - \"1\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"*\" - \"1\" " + UmlParser
-	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"*\" - \"1\" " + UmlParser.class_nm);
+	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"1\" " + UmlParser.class_nm, UmlParser.ls.get(i) /*UmlParser.ls.get(i) + "\"*\" - \"1\" " + UmlParser*/+ "\"*\" - \"1\" " + UmlParser.class_nm);
 	}
 	
 	else if(UmlParser.input.contains(UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm ) && chk == false)	{
 		//System.out.println(input);
-	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"1\" - \"*\" " + UmlParser.class_nm);
+	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"1\" - \"*\" "/*"\"1\" - \"**/ + UmlParser.class_nm);
 	}
 	
 	else if(UmlParser.input.contains( UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm ) && chk == true)	{
 	
-	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm, UmlParser.ls.get(i) + "\"*\" - \"*\" " + UmlParser.class_nm);
+	UmlParser.input.replace(UmlParser.ls.get(i) + " - \"*\" " + UmlParser.class_nm, UmlParser.ls.get(i) +/*"\"1\" - \"**/ "\"*\" - \"*\" " + UmlParser.class_nm);
 	}
 	else	{	
 		//if(chk==     ;
 	if(chk==false)		
-	UmlParser.input = UmlParser.input + UmlParser.class_nm + " - \"1\" " + UmlParser.ls.get(i) + "\n";
+	UmlParser.input = UmlParser.input + UmlParser.class_nm + " - \"1\" "/*"\"1\" - \"**/ + UmlParser.ls.get(i) + "\n";
 	else
 		/* else {
 		 UmlParser.input = UmlParser.input + UmlParser.class_nm + " - \"*\" " + UmlParser.ls.get(i)
 		 }
 		 */
-	UmlParser.input = UmlParser.input + UmlParser.class_nm + " - \"*\" " + UmlParser.ls.get(i) + "\n";
+	UmlParser.input = UmlParser.input + UmlParser.class_nm +/*"\"1\" - \"**/ " - \"*\" " + UmlParser.ls.get(i) + "\n";
 	}
 	
 	
 	
 	}
 		
-	String k =n.toString();
+	String k;
+	k=n.toString();
 	/*k.replaceAll("[;]", "")
 	String strs = k.split("\\s+");
 	String[] strs = k.split("\\s+");*/
@@ -94,37 +98,43 @@ package ProjectUML;
 	
 	//if(strs[0].equals("public")
 	if(strs[0].equals("public")){
-	strs[0]="+" ;
+		
+	strs[0]="+";//public
 	}
-	if(strs[0].equals("private"))
+	if(strs[0].equals("private"))//{
 	{ 
-	if(UmlParser.operations.contains("set"+strs[2]) && UmlParser.operations.contains("get"+strs[2])){
+		
+	if(UmlParser.operations.contains("set"+strs[2]) && UmlParser.operations.contains("get"+strs[2])){//{
 	strs[0]="+" ;
 	}
 	else{
-	strs[0]="-" ;
+		
+	strs[0]="-" ;//private
 	}
+	
 	
 	}
 	if(strs[0].equals("protected"))
-	strs[0]="#" ;
+	strs[0]="#" ;//protected
 	//if(strs.length >2)
-	if(strs.length >2 && (strs[0] == "+" || strs[0] == "-")) {
+	if(strs.length >2 && (strs[0] == "+" || strs[0] == "-")) {//attributes
 		
-	UmlParser.input = UmlParser.input + UmlParser.class_nm + " : " + strs[0] + " " + strs[2] + " : " + strs[1];
+	UmlParser.input=UmlParser.input+UmlParser.class_nm +/* " : " + strs[0] + " " + strs[2] + " : " + strs[1];*/ " : " + strs[0] + " " + strs[2] + " : " + strs[1];
+	
 	UmlParser.input = UmlParser.input + "\n";
 	//System.out.println(input);
 	// str[[2]=Character.toUpperCase(str[2])+str[2].substring(1);
 	strs[2] = Character.toUpperCase(strs[2].charAt(0)) + strs[2].substring(1);
-		String del1 = "get" + strs[2];
-	String del2 = "set" + strs[2];
+	//Character.toUpperCase(strs[2].charAt(0))
+		String del1 = "get" + strs[2];//del2=
+	String del2 = "set" + strs[2];//del2="set" + strs[2]
 	
 	/*UmlParser.input = UmlParser.input.replaceAll( ".*"+d1+".*(\r?\n|\r) "" );
 	UmlParser.input = UmlParser.input.replaceAll( ".*"+d2+".*(\r?\n|\r) "" );
 	*/
-	UmlParser.input = UmlParser.input.replaceAll( ".*"+del1+".*(\r?\n|\r)?", "" );
+	UmlParser.input = UmlParser.input.replaceAll( /*(\r?\n*/".*"+del1+".*(\r?\n|\r)?", "" );
 	//System.out.println(del1 + del2);
-	UmlParser.input = UmlParser.input.replaceAll( ".*"+del2+".*(\r?\n|\r)?", "" );
+	UmlParser.input = UmlParser.input.replaceAll( ".*"+del2+".*(\r?\n|\r)?", ""/*(\r?\n*/ );
 	
 	
 	}

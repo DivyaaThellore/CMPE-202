@@ -1,5 +1,8 @@
 package ProjectUML;
-
+/* 
+ * author T V Divyaa
+ * 
+ */
 import java.util.List;
 
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
@@ -11,11 +14,6 @@ import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 
 public class FindInterface extends VoidVisitorAdapter {
-
-	/* 
-	 * author T V Divyaa
-	 * 
-	 */
 
 
 public void visit(ClassOrInterfaceDeclaration n, Object obj)
@@ -31,15 +29,15 @@ if(inter==null)
 
 	// checking. if not null proceed.
 	
-for (ClassOrInterfaceType i : inter) {
+for (ClassOrInterfaceType i : inter) {//{
 	//System.out.printn("check");
 	//System.out.println(i.toString());
 	
-String str = i.toString();
+String str = i.toString();//i
 UmlParser.interfaces.add(str);
-if(!UmlParser.input.contains( str + "<|.. " + UmlParser.class_nm )
+if(!UmlParser.input.contains( str + "<|.. " /*<|--*/+ UmlParser.class_nm )
 && !UmlParser.input.contains
-( str + "<.. " + UmlParser.class_nm + ":uses" ))
+( str + "<.. "/*"<.."*/ + UmlParser.class_nm + ":uses" ))
 	//System.out.println("test");
 	//UmlParser.input = UmlParser.input;
 	
@@ -47,7 +45,8 @@ if(!UmlParser.input.contains( str + "<|.. " + UmlParser.class_nm )
 /*UmlParser.input = UmlParser.input+ str;
 UmlParser.input = UmlParser.input+ " " + "<|.. "; */
 
-	UmlParser.input = UmlParser.input + str + " " + "<|.. " + " " +UmlParser.class_nm + "\n";
+	UmlParser.input = UmlParser.input + str + " ";//+" "+<|--
+    UmlParser.input = UmlParser.input + "<|.. " + " " +UmlParser.class_nm + "\n";//UmlParser.class_nm 
 
 //UmlParser.input = UmlParser.input+ " " + UmlParser.class_nm + "\n";
 
@@ -55,7 +54,7 @@ UmlParser.input = UmlParser.input+ " " + "<|.. "; */
 }
 
 
-
+//}
 
 }
 }

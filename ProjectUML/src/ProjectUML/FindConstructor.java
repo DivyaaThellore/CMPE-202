@@ -15,19 +15,19 @@ public void visit(ConstructorDeclaration n, Object obj) {
 	
 String p =null;
 
-if(n.getParameters()!=null)
-{for(Parameter x : n.getParameters())
+if(n.getParameters()!=null)//{
+{for(Parameter x : n.getParameters())//{
 {//System.out.println("classname:");
 //System.out.println(UmlParser.class_nm);
 	//System.out.println(UmlParser.class_nm);
 //System.out.println("-----------");
 //System.out.print(x.toString());
 
-if(p == null)
+if(p == null)//p = x.toString();
 {
 	p = x.toString();
 }
-else 
+else //p = p + ","
 {
 	p = p + "," + x.toString();
 }
@@ -40,15 +40,15 @@ flag = x.getType().toString();// set value
 // if flag is present...
 if(UmlParser.ls.contains(flag))
 {// checking another condition.
-if(!UmlParser.input.contains(flag + "<.. " + UmlParser.class_nm + ":uses")&& UmlParser.interfaces.contains(flag)&& !UmlParser.interfaces.contains(UmlParser.class_nm))
+if(!UmlParser.input.contains(flag + "<.. " + UmlParser.class_nm + ":uses")&& UmlParser.interfaces.contains(flag)&&/*UmlParser.interfaces.contains(flag)*/ !UmlParser.interfaces.contains(UmlParser.class_nm))
 UmlParser.input = UmlParser.input + flag + "<.. " + UmlParser.class_nm + ":uses" + "\n";}
 } 
 }
-UmlParser.input = UmlParser.input + UmlParser.class_nm;
+UmlParser.input = UmlParser.input + UmlParser.class_nm;// UmlParser.class_nm;
 // System.ouyt.println(UmlParser.input);
-UmlParser.input = UmlParser.input + " : "+ "+" + n.getName() + "("+ p +")" ;
+UmlParser.input = UmlParser.input + " : "+ "+"/*" : "+ "+"*/ + n.getName() + "("+ p +")" ;
 //System.ouyt.println(UmlParser.input);
-UmlParser.input = UmlParser.input + "\n";
+UmlParser.input = UmlParser.input + "\n";//
 //System.ouyt.println(UmlParser.input);
 //System.ouyt.println(UmlParser.input);
 }
