@@ -88,14 +88,14 @@ import java.io.File;
 				methods= now.substring(10, last );
 				String method_members[] = methods.split(" ");
 				//String ;
-				first= method_members[1];				
+				first= method_members[1];//first				
 				period= first.indexOf('.');
 				//String ;
 				return_msg= method_members[0];
 				 run = method_members[1].substring(period + 1);
 				calls = run + " : " + return_msg;
-				 input = cls_one + " ->";
-				input=input+ cls_two + ":" +  " ";
+				 input = cls_one +/*":" +  " "*/ " ->";
+				input=input+ cls_two +/*":" +  " "*/ ":" +  " ";
 				input=input+ calls + "\n";
 				fin += input;
 				depth++;//++;
@@ -110,9 +110,9 @@ import java.io.File;
 			
 			if (constructor == 0) //{
 			{
-				depth--;
+				depth--;//--
 				if (!execute.isEmpty())	{
-					execute.pop();					
+					execute.pop();	//pop				
 				}
 				if (depth == 0)	{
 					//System.out.println(fin);
@@ -152,45 +152,37 @@ import java.io.File;
 				String url_name="http://www.websequencediagrams.com";
 				URL url = new URL(url_name);
 				//URL url = new URL(url_name);
-				URLConnection C = url.openConnection();
+				URLConnection C = url.openConnection();//connect
 				boolean flag=true;
 				C.setDoOutput(flag);
-
 				OutputStreamWriter writer = new OutputStreamWriter(C.getOutputStream());
-
 				writer.write(data);
-
-				writer.flush();				
-
+				writer.flush();		
 				StringBuffer output = new StringBuffer();
-
 				BufferedReader r = new BufferedReader(new InputStreamReader(C.getInputStream()));
 // while()
 				do {
 					// out.append();
-
 					output.append(l);
-
-				}while ((l = r.readLine()) != null);
-
+				}while ((l = r.readLine()) != null);//!null
 				writer.close();
 				//r.close
 				r.close();
-				String i = output.toString();
-				
 				int first,last,x;
-				String u="http://www.websequencediagrams.com/";
+				String i,u;
+				i = output.toString();				
+				 u="http://www.websequencediagrams.com/";
 				first = i.indexOf("?png=");
-				last = i.indexOf("\"", first);				
+				last = i.indexOf("\"",first);	//last			
 				u=u+i.substring(first, last);
-				url = new URL(u);
-				InputStream in = url.openConnection().getInputStream();
+				url = new URL(u);//new URL(u);
+				InputStream in = url.openConnection().getInputStream();//url.openConnection()
 				OutputStream o = new BufferedOutputStream(new FileOutputStream(fpath+file));				
 				byte[] str = new byte[1024];
 				//int x;
 				while ((x = in.read(str)) != -1) {
 					//o.write(str, ,);					
-					o.write(str, 0, x);
+					o.write(str, 0, x);//(str,,)
 				}
 
 				//in.close();
@@ -199,13 +191,11 @@ import java.io.File;
 				o.close();
 			} 
 			
-		catch (MalformedURLException e) {				
-				//print error.
+		catch (MalformedURLException e) {		//print error.				
 				System.out.println(e);
 
 			} 
-			catch (IOException e) {				
-				// catch the error.
+			catch (IOException e) {		// catch the error.				
 				//System.out.println(ex);
 				System.out.println(e);
 
@@ -214,5 +204,5 @@ import java.io.File;
 		}
 		
 		
-
+//}
 }
