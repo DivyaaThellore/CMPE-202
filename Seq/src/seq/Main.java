@@ -173,7 +173,7 @@ public String getpath(String path)
 	//String path="C:\\Users\\T V Divyaa\\Desktop\\FinalTestCases\\sequence\\";
 			
 		//path=args[0];
-		getpath(args[0]);
+		//getpath(args[0]);
 		   
       
 		Main m = new Main() ;
