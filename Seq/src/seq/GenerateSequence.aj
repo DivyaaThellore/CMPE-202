@@ -64,15 +64,15 @@ import java.io.File;
 		private int depth = 0;//-
 		private int constructor = 0;
 		
-		before():constructors() {
+		before():constructors() {//
 			// push
 			constructor++;
 		}
-		after():constructors() {
+		after():constructors() {//
 			//pop
 			constructor--;
 		}
-		before()  : methods() {
+		before()  : methods() {//
 			if (constructor == 0) {
 				String cls = thisJoinPoint.getTarget().getClass().getName();//.getTarget().getClass()
 				String cls_one = null;	//null			
@@ -96,14 +96,14 @@ import java.io.File;
 				String method_members[] = methods.split(" ");
 				//String ;
 				first= method_members[1];//first				
-				period= first.indexOf('.');
+				period= first.indexOf('.');//.
 				//String ;
 				return_msg= method_members[0];
 				 run = method_members[1].substring(period + 1);
 				calls = run + " : " + return_msg;
 				 input = cls_one +/*":" +  " "*/ " ->";
 				input=input+ cls_two +/*":" +  " "*/ ":" +  " ";
-				input=input+ calls + "\n";
+				input=input+ calls + "\n";//calls
 				fin += input;
 				depth++;//++;
 				execute.push(cls_two);//push
@@ -155,7 +155,7 @@ import java.io.File;
 				bw.write(text);
 				bw.close(); 			    
 				//System.out.println(text);
-				String data = "style=" + style + "&message=" + URLEncoder.encode(text, "UTF-8") + "&apiVersion=1";//
+				String data = "style=" + style + "&message=" + URLEncoder.encode(text, "UTF-8") +/*apiVersion*/ "&apiVersion=1";//
 				String url_name="http://www.websequencediagrams.com";
 				URL url = new URL(url_name);
 				//URL url = new URL(url_name);
@@ -165,7 +165,7 @@ import java.io.File;
 				OutputStreamWriter writer = new OutputStreamWriter(C.getOutputStream());
 				writer.write(data);//write(data);
 				writer.flush();	//flush	
-				StringBuffer output = new StringBuffer();
+				StringBuffer output = new StringBuffer();//:;
 				BufferedReader r = new BufferedReader(new InputStreamReader(C.getInputStream())); //BufferedReader r
 // while()
 				do {// out.append();
